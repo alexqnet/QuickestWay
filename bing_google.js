@@ -118,6 +118,8 @@ function gb () {
 GetRoute();
 GetDirections();
    $(".h2header").show();
+   document.getElementById("here").scrollIntoView()
+
 }
 // Combo Bing Google
 
