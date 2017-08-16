@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QuickestWay</title>
+
+<style>
+#map, #myMap, #gmap {
+    width: 100%;
+    height: 200px;
+    max-width: 800px;
+    margin-bottom: 30px;
+/*    z-index: 1;*/
+    opacity : 0;
+}
+
+#h3Compare, .h2header {
+    opacity : 0;
+}
+
+/*.white {
+    background-color: white;
+    z-index: 2;
+    width: 100%;
+    height: 200px;
+}*/
+
+
+.steps {
+}
+
+</style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/custom-css.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="GoogleAPI.css">
+
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/portfolio-item.css" rel="stylesheet">
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.1.0/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.1.0/mapquest.css"/>
+
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="index.html">QuickestWay</a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+<!--         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div> -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <h1 class="my-4">Compare Google Maps, Bing Maps and MapQuest for quickest directions</h1>
+
+        <!-- Portfolio Item Row -->
+        <div class="row justify-content-md-center">
+
+        <div class="col-md-7">
+<form role="form">
+<div class="form-group">
+  <label for="start-input">Starting location:</label>
+  <input class="form-control" id="start-input" type="text">
+</div>
+
+<div class="form-group">
+  <label for="end-input">Destination:</label>
+  <input class="form-control" id="end-input" type="text">
+</div>
+
+  <button class="btn-primary" id="btnsubmit" type="button" value="Get Route" onclick="gb()">Get directions</button>
+   <button class="btn-primary" id="clear" type="button" value="Search Again" onclick="clearForm()">Search Again</button>
+</form>
+        </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- second row -->
+
+        <div class="row justify-content-md-center">
+
+
+        </div>
+
+        <!-- Related Projects Row -->
+        <h3 class="my-4" id="h3Compare">Compare</h3>
+
+        <div class="row">
+
+            <div class="col-md-4 col-sm-6 mb-4">
+            <div id="btnmapquest"><h2 class="h2header">MapQuest</h2></div>
+            <div id="map" class="maps"></div>
+            <div id="mapquest"></div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+            <div id="btngoogle"><h2 class="h2header">Google</h2></div>
+            <div id="gmap" class="maps"></div>
+            <div id="google"></div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+            <div id="btnbing"><h2 class="h2header">Bing</h2></div>
+            <div class="white">
+            <div id="myMap" class="maps"></div></div>
+            <div id="bing"></div>    
+            </div>
+
+
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white"></p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGnjtIzSK84zjMQ0dK0o_jXarOVeWZBa0&libraries=places"></script>
+  
+    <script type="text/javascript" src="mapquest.js"></script>
+<!--     <script type="text/javascript" src="GoogleAPI.js"></script>
+    <script type="text/javascript" src="bing.js"></script>
+ -->
+     <script type="text/javascript" src="bing_google.js"></script>
+
+<script>
+   // $(function(){
+   //    $("#h3Compare").hide();
+   //    $(".h2header").hide();
+   // });
+
+    // $("btnmapquest").click(function(){
+    //     $("#mapquest").css({"height": "500px", "width": "400px"});
+    // });
+
+
+// function mqMapShow() {
+// $( "#btnmapquest" ).click(function() {
+// mqmap()
+// });
+// }
+
+// $( "#btngooogle" ).click(function() {
+//     $("#gmap").css({"height": "200px", "width": "100%"});
+// });
+
+// $( "#btnbing" ).click(function() {
+//     $("#myMap").css({"height": "200px", "width": "100%"});
+// });
+
+// function mqMapShow() {
+//     var x = document.getElementById('map');
+//     if (x.style.display === 'none') {
+//         x.style.display = 'block';
+//     } else {
+//         x.style.display = 'none';
+//     }
+// }
+
+// function glMapShow() {
+//     var x = document.getElementById('gmap');
+//     if (x.style.display === 'none') {
+//         x.style.display = 'block';
+//     } else {
+//         x.style.display = 'none';
+//     }
+// }
+
+// function bmMapShow() {
+//     var x = document.getElementById('myMap');
+//     if (x.style.display === 'none') {
+//         x.style.display = 'block';
+//     } else {
+//         x.style.display = 'none';
+//     }
+// }
+
+function clearForm() {
+    location.reload();
+}
+
+</script>
+
+</body>
+
+</html>
