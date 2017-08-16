@@ -27,6 +27,11 @@
     height: 200px;
 }*/
 
+@media only screen and (max-width: 500px) {
+    body {
+        background-color: lightblue;
+    }
+}
 
 .steps {
 }
@@ -38,7 +43,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="css/custom-css.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="GoogleAPI.css">
+    <link rel="stylesheet" type="text/css" href="./css/animate.css">
+
 
 
 
@@ -86,7 +92,7 @@
     <div class="container">
 
         <!-- Portfolio Item Heading -->
-        <h1 class="my-4">Compare Google Maps, Bing Maps and MapQuest for quickest directions</h1>
+        <h1 class="my-4 animated bounceInLeft" style="text-align: center;">Compare Google Maps, Bing Maps and MapQuest for quickest directions</h1>
 
         <!-- Portfolio Item Row -->
         <div class="row justify-content-md-center">
@@ -124,21 +130,30 @@
         <div class="row">
 
             <div class="col-md-4 col-sm-6 mb-4">
+
             <div id="btnmapquest"><h2 class="h2header">MapQuest</h2></div>
-            <div id="map" class="maps"></div>
+<!--             <div class="collapse">
+ -->            <div id="map" class="maps"></div>
             <div id="mapquest"></div>
-            </div>
+<!--             </div>
+ -->            </div>
+
             <div class="col-md-4 col-sm-6 mb-4">
             <div id="btngoogle"><h2 class="h2header">Google</h2></div>
-            <div id="gmap" class="maps"></div>
+<!--             <div class="collapse">
+ -->            <div id="gmap" class="maps"></div>
             <div id="google"></div>
-            </div>
+<!--             </div>
+ -->            </div>
+
             <div class="col-md-4 col-sm-6 mb-4">
             <div id="btnbing"><h2 class="h2header">Bing</h2></div>
-            <div class="white">
+<!--             <div class="collapse">
+ -->            <div class="white">
             <div id="myMap" class="maps"></div></div>
-            <div id="bing"></div>    
-            </div>
+            <div id="bing"></div>   
+<!--             </div>
+ -->            </div>
 
 
 
@@ -163,11 +178,11 @@
     
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGnjtIzSK84zjMQ0dK0o_jXarOVeWZBa0&libraries=places"></script>
   
-    <script type="text/javascript" src="mapquest.js"></script>
-<!--     <script type="text/javascript" src="GoogleAPI.js"></script>
+<!--     <script type="text/javascript" src="mapquest.js"></script>
+ --><!--     <script type="text/javascript" src="GoogleAPI.js"></script>
     <script type="text/javascript" src="bing.js"></script>
  -->
-     <script type="text/javascript" src="bing_google.js"></script>
+     <script type="text/javascript" src="bgm.js"></script>
 
 <script>
    // $(function(){
@@ -190,9 +205,6 @@
 //     $("#gmap").css({"height": "200px", "width": "100%"});
 // });
 
-// $( "#btnbing" ).click(function() {
-//     $("#myMap").css({"height": "200px", "width": "100%"});
-// });
 
 // function mqMapShow() {
 //     var x = document.getElementById('map');
@@ -226,7 +238,12 @@ function clearForm() {
     $(window).scrollTop(0);
 }
 
+
+
 </script>
+
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 
 </body>
 
