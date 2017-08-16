@@ -8,7 +8,7 @@ $("#mapquest-title").empty();
 
 $(".maps").css({"opacity": "1"});
 $(".h2header").css({"opacity": "1"});
-$("#h3Compare").css({"opacity": "1"});
+// $("#h3Compare").css({"opacity": "1"});
 
 
 
