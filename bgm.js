@@ -60,6 +60,8 @@
                     var distance = response.rows[0].elements[0].distance.text;
                     var duration = response.rows[0].elements[0].duration.text;
                     var dvDistance = $("#google").append("<p><b>Trip Time:</b> " + duration + "<br /><b>Total distance:</b> " + distance + "<br /><hr>");
+                    $("#glt").html("<p>" + duration + "</p>");
+                    console.log(duration);
 
                 } else {
                     alert("Unable to find the distance via road.");
@@ -136,12 +138,14 @@ var msstart = $("#start-input").val();
         jsonp: 'jsonp'  
         }).done(function(answer) {
            var distance = answer.resourceSets[0].resources[0].travelDistance;
+           var distance = Math.floor(distance * 0.621371);
            var duration = answer.resourceSets[0].resources[0].travelDuration;
            var hours = Math.floor((duration/60)/60) + " hours "
            var minutes = Math.floor((duration/60) % 60) + " mins"
            var duration = hours + minutes
 
                 $("#bing").append("<p><b>Trip Time:</b> " + duration + "<br />" + "<b>Total distance:</b> " + distance + " mi <br/></p><hr>");
+                $("#bmt").html("<p>" + answer.resourceSets[0].resources[0].travelDuration + "</p>");
 
             for (var i=0; i<answer.resourceSets[0].resources[0].routeLegs[0].itineraryItems.length;i++){
               $("#bing").append("<div><p>" + answer.resourceSets[0].resources[0].routeLegs[0].itineraryItems[i].instruction.text + ". Drive " + answer.resourceSets[0].resources[0].routeLegs[0].itineraryItems[i].travelDistance + " miles.</p><hr></div>" );
@@ -256,6 +260,8 @@ $.ajax({
     console.log(mqurl);
     // console.log (result.route.realTime);
     console.log (result.route.legs[0].maneuvers.length);
+        console.log (result.route.realTime);
+
   var mqduration = result.route.realTime;
            var mqhours = Math.floor((mqduration/60)/60) + " hours "
            var mqminutes = Math.floor((mqduration/60) % 60) + " mins"
@@ -265,6 +271,9 @@ $.ajax({
 
     // $("#h3Compare").show();
     // $(".h2header").show();
+
+    $("#mqt").html("<p>" + mqduration + "</p>");
+
     $("#mapquest").append("<div><p><b>Trip time: </b>" + mqduration + "<br /><b>Total distance: </b>" + result.route.distance + " mi</p><hr></div>");
 
 
